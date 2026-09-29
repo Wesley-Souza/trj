@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>trj · no ar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ceu: #cfe3f0;
+      --tinta: #13233a;
+      --ponto: #1f9d55;
+      --suave: #4a5e78;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    html, body { height: 100%; }
+    body {
+      background: var(--ceu);
+      color: var(--tinta);
+      font-family: "Bricolage Grotesque", system-ui, sans-serif;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+    }
+    main { max-width: 38rem; }
+    h1 {
+      font-size: clamp(3.5rem, 14vw, 8rem);
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+    }
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+      font-size: 1.25rem;
+    }
+    .status::before {
+      content: "";
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background: var(--ponto);
+      box-shadow: 0 0 0 0 var(--ponto);
+      animation: pulso 2s infinite;
+    }
+    p.info { margin-top: 1rem; color: var(--suave); line-height: 1.6; }
+    code { font-family: inherit; font-weight: 800; color: var(--tinta); }
+    @keyframes pulso {
+      70% { box-shadow: 0 0 0 0.6rem transparent; }
+      100% { box-shadow: 0 0 0 0 transparent; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .status::before { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>trj</h1>
+    <p class="status">O deploy na Vercel funcionou.</p>
+    <p class="info">
+      Servido em <code id="host">…</code><br>
+      Página carregada em <span id="hora">…</span>
+    </p>
+  </main>
+  <script>
+    document.getElementById("host").textContent = location.host || "arquivo local";
+    document.getElementById("hora").textContent =
+      new Date().toLocaleString("pt-BR", { dateStyle: "long", timeStyle: "short" });
+  </script>
+</body>
+</html>
