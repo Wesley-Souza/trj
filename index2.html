@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orçamento Traje Esporte Fino</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF6EE;
+    --surface:#FFFFFF;
+    --surface-2:#F3ECDF;
+    --ink:#18140E;
+    --ink-soft:#5C5344;
+    --orange:#EF7B1C;
+    --orange-deep:#B85A0E;
+    --line:#E8DFCD;
+    --black:#141110;
+    --on-black:#F7F1E4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#151109;
+      --surface:#1D1811;
+      --surface-2:#241D14;
+      --ink:#F6EFE1;
+      --ink-soft:#C8BCA5;
+      --orange:#FF9C4A;
+      --orange-deep:#FFBD83;
+      --line:#372C1C;
+      --black:#0B0904;
+      --on-black:#F6EFE1;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#151109;
+    --surface:#1D1811;
+    --surface-2:#241D14;
+    --ink:#F6EFE1;
+    --ink-soft:#C8BCA5;
+    --orange:#FF9C4A;
+    --orange-deep:#FFBD83;
+    --line:#372C1C;
+    --black:#0B0904;
+    --on-black:#F6EFE1;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Work Sans", system-ui, sans-serif;
+    padding-inline:16px;
+    padding-block:40px;
+    display:flex;
+    justify-content:center;
+    margin:0;
+  }
+  .sheet{
+    width:100%;
+    max-width:760px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:18px;
+    overflow:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:"Anton", "Arial Narrow", sans-serif;
+    font-weight:400;
+    letter-spacing:0.01em;
+    text-wrap:balance;
+    margin:0;
+  }
+
+  /* Hero */
+  .hero{
+    background:var(--surface-2);
+    padding:40px 32px 32px;
+    text-align:center;
+    border-bottom:3px dashed var(--orange);
+  }
+  .hero img{
+    width:min(220px, 60%);
+    height:auto;
+    display:block;
+    margin:0 auto 18px;
+  }
+  .eyebrow{
+    margin:0;
+    color:var(--orange-deep);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+  }
+
+  /* Event info */
+  .event-info{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .event-info .field{
+    background:var(--surface);
+    padding:16px 18px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .event-info .label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+  .event-info .value{
+    font-size:15px;
+    color:var(--ink-soft);
+    border-bottom:1px dotted var(--line);
+    padding-bottom:4px;
+    min-height:1.4em;
+  }
+  @media (max-width:520px){
+    .event-info{grid-template-columns:1fr;}
+  }
+
+  /* About the band */
+  .about{
+    padding:28px 32px 0;
+    text-align:center;
+  }
+  .band-photo{
+    margin:0 0 18px;
+    border-radius:14px;
+    overflow:hidden;
+    aspect-ratio:16/10;
+  }
+  .band-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .about p{
+    margin:0 auto;
+    max-width:48ch;
+    font-size:14.5px;
+    line-height:1.65;
+    color:var(--ink-soft);
+    orphans:3;
+    widows:3;
+  }
+  .about p + p{
+    margin-top:10px;
+  }
+  .about strong{
+    color:var(--ink);
+    font-weight:700;
+  }
+
+  /* Intro */
+  .intro{
+    padding:32px 32px 8px;
+    text-align:center;
+  }
+  .intro h2{
+    font-size:clamp(24px, 5vw, 30px);
+    line-height:1.15;
+  }
+  .intro p{
+    margin:10px auto 0;
+    max-width:46ch;
+    color:var(--ink-soft);
+    font-size:15px;
+    line-height:1.5;
+  }
+
+  /* Packages */
+  .packages{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:16px;
+    padding:28px 24px;
+  }
+  @media (max-width:640px){
+    .packages{grid-template-columns:1fr;}
+  }
+  .package{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px 18px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    position:relative;
+  }
+  .package.featured{
+    background:var(--black);
+    color:var(--on-black);
+    border-color:var(--black);
+  }
+  .package .badge{
+    position:absolute;
+    top:-12px;
+    left:50%;
+    transform:translateX(-50%);
+    background:var(--orange);
+    color:var(--black);
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    padding:5px 12px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .package h3{
+    font-size:22px;
+  }
+  .package.featured h3{color:var(--on-black);}
+  .package .tag{
+    margin:0;
+    font-size:12.5px;
+    color:var(--orange-deep);
+    font-weight:600;
+  }
+  .package.featured .tag{color:var(--orange);}
+  .package .price{
+    margin:0;
+    font-family:"Anton","Arial Narrow",sans-serif;
+    font-size:28px;
+    color:var(--ink);
+    display:flex;
+    flex-direction:column;
+    line-height:1.1;
+  }
+  .package.featured .price{color:var(--on-black);}
+  .package .price span{
+    order:-1;
+    font-family:"Work Sans", sans-serif;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+  .package.featured .price span{color:#B7AC98;}
+  .package ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .package.featured ul{color:#D8CFBE;}
+  .package ul li{
+    padding-left:16px;
+    position:relative;
+    line-height:1.4;
+  }
+  .package ul li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:7px;
+    width:6px;
+    height:6px;
+    background:var(--orange);
+    border-radius:1px;
+    transform:rotate(45deg);
+  }
+
+  /* Add-ons: banda avulsa */
+  .addons{
+    padding:26px 32px 6px;
+    border-top:3px dashed var(--orange);
+  }
+  .addons h4{
+    font-size:19px;
+    margin-bottom:14px;
+  }
+  .addon-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    padding:13px 0;
+    border-bottom:1px dotted var(--line);
+  }
+  .addon-row:last-child{
+    border-bottom:none;
+  }
+  .addon-info{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .addon-name{
+    font-weight:600;
+    font-size:14.5px;
+  }
+  .addon-desc{
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+  .addon-price{
+    font-family:"Anton","Arial Narrow",sans-serif;
+    font-size:19px;
+    color:var(--orange-deep);
+    white-space:nowrap;
+  }
+
+  /* Notes */
+  .notes{
+    padding:8px 32px 24px;
+  }
+  .notes h4{
+    font-family:"Work Sans", sans-serif;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--ink-soft);
+    font-weight:700;
+    margin:0 0 10px;
+  }
+  .notes .cond-item{
+    position:relative;
+    margin:0 0 6px;
+    padding-left:16px;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    line-height:1.6;
+  }
+  .notes .cond-item:last-child{
+    margin-bottom:0;
+  }
+  .notes .cond-item::before{
+    content:"•";
+    position:absolute;
+    left:2px;
+  }
+
+  /* Footer */
+  .contact{
+    background:var(--black);
+    color:var(--on-black);
+    padding:26px 32px;
+    text-align:center;
+    border-top:3px dashed var(--orange);
+  }
+  .contact .cta{
+    margin:0 0 12px;
+    font-family:"Anton","Arial Narrow",sans-serif;
+    font-size:22px;
+    color:var(--orange);
+  }
+  .contacts{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px 18px;
+    font-size:13.5px;
+    color:#D8CFBE;
+  }
+
+  @media print{
+    @page{ size:A4; margin:10mm; }
+    *{
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+      color-adjust:exact !important;
+    }
+    body{ padding:0; background:#fff; }
+    .sheet{ border:none; border-radius:0; max-width:100%; }
+    .hero, .event-info, .about, .about p, .intro, .packages, .package,
+    .addons, .addon-row, .notes, .notes .cond-item, .contact{
+      break-inside:avoid-page;
+      page-break-inside:avoid;
+    }
+    .hero{ padding:16px 32px 12px; }
+    .hero img{ width:150px; margin-bottom:10px; }
+    .band-photo{ aspect-ratio:16/9; margin-bottom:14px; }
+    .about{ padding:10px 32px 0; }
+    .intro, .addons, .notes{
+      break-before:page;
+      page-break-before:always;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <header class="hero">
+    <img src="orcamento/logo.png" alt="Traje Esporte Fino">
+    <p class="eyebrow">Banda &amp; Estrutura para Casamentos</p>
+  </header>
+
+  <section class="event-info">
+    <div class="field">
+      <span class="label">Para</span>
+      <span class="value">Juliana Corne</span>
+    </div>
+    <div class="field">
+      <span class="label">Data do evento</span>
+      <span class="value">09/10/2027</span>
+    </div>
+    <div class="field">
+      <span class="label">Local</span>
+      <span class="value">Chácara do Nelson</span>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="band-photo">
+      <img src="orcamento/banda.jpg" alt="Traje Esporte Fino se apresentando ao vivo em um casamento">
+    </div>
+    <p>A <strong>Traje Esporte Fino</strong> é uma banda versátil, com um repertório que passeia por diferentes estilos musicais. Para cada evento, montamos uma seleção personalizada de músicas, levando em conta o gosto do casal e o perfil da festa.</p>
+    <p>Assim, cada apresentação ganha uma identidade própria, com músicas escolhidas para combinar com os noivos, os convidados e cada momento da celebração.</p>
+  </section>
+
+  <section class="intro">
+    <h2>Sua festa no estilo certo.</h2>
+    <p>Quatro pacotes de banda e estrutura pra você escolher o que combina com o seu casamento.</p>
+  </section>
+
+  <section class="packages">
+    <article class="package">
+      <h3>Essential</h3>
+      <p class="tag">O começo com estilo</p>
+      <p class="price"><span>a partir de</span>R$ 6.500</p>
+      <ul>
+        <li>Som e iluminação (4 movings, 4 strobos, 2 cobs)</li>
+        <li>2h de apresentação ao vivo</li>
+        <li>4h de DJ</li>
+        <li>Repertório dançante personalizado</li>
+      </ul>
+    </article>
+
+    <article class="package">
+      <h3>Classic</h3>
+      <p class="tag">O essencial, impecável</p>
+      <p class="price"><span>a partir de</span>R$ 8.000</p>
+      <ul>
+        <li>Som e iluminação (4 movings, 4 strobos, 2 cobs)</li>
+        <li>Painel de LED 3x2</li>
+        <li>2h de apresentação ao vivo</li>
+        <li>4h de DJ</li>
+        <li>Repertório dançante personalizado</li>
+      </ul>
+    </article>
+
+    <article class="package featured">
+      <span class="badge">Mais escolhido</span>
+      <h3>Elegance</h3>
+      <p class="tag">O equilíbrio perfeito</p>
+      <p class="price"><span>a partir de</span>R$ 11.000</p>
+      <ul>
+        <li>Som e iluminação (6 movings, 6 strobos, 2 cobs)</li>
+        <li>Painel de LED 4x2</li>
+        <li>2h30 de apresentação ao vivo</li>
+        <li>3h30 de DJ</li>
+        <li>Pista Paris 4x4</li>
+        <li>Palco (se necessário)</li>
+      </ul>
+    </article>
+
+    <article class="package">
+      <h3>Prestige</h3>
+      <p class="tag">Luxo do início ao fim</p>
+      <p class="price"><span>a partir de</span>R$ 14.000</p>
+      <ul>
+        <li>Som e iluminação (6 movings, 8 strobos, 2 cobs)</li>
+        <li>Painel de LED 5x3</li>
+        <li>3h de show ao vivo</li>
+        <li>3h de DJ</li>
+        <li>Pista Prisma</li>
+        <li>Palco (se necessário)</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="addons">
+    <h4>Prefere contratar só a banda?</h4>
+    <div class="addon-row">
+      <div class="addon-info">
+        <span class="addon-name">Somente a Banda</span>
+        <span class="addon-desc">Show de 2h30 — você já tem som, luz e backline</span>
+      </div>
+      <span class="addon-price">R$ 4.500</span>
+    </div>
+    <div class="addon-row">
+      <div class="addon-info">
+        <span class="addon-name">Banda + Backline</span>
+        <span class="addon-desc">Show de 2h30 — inclui mesa de som, microfones, pedestais, bateria e técnico de som</span>
+      </div>
+      <span class="addon-price">R$ 5.200</span>
+    </div>
+  </section>
+
+  <section class="notes">
+    <h4>Condições</h4>
+    <p class="cond-item">Valores sujeitos a alteração conforme data, horário e local do evento.</p>
+    <p class="cond-item">Reserva de data mediante sinal de 30% + contrato.</p>
+    <p class="cond-item">Deslocamento fora da região de Araraquara cobrado à parte.</p>
+  </section>
+
+  <footer class="contact">
+    <p class="cta">Vamos fazer parte do seu grande dia?</p>
+    <div class="contacts">
+      <span>(16) 99776-2232</span>
+      <span>@trajeesportefino</span>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
